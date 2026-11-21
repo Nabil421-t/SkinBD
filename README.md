@@ -20,7 +20,7 @@ license: mit
 [![Live Demo](https://img.shields.io/badge/🤗_Live_Demo-Open_App-2563eb?style=for-the-badge)](https://huggingface.co/spaces/rafilovestosuffer/skinai-bd)
 [![Demo Video](https://img.shields.io/badge/YouTube-Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/9zOjfBBU4qg)
 [![Telegram Bot](https://img.shields.io/badge/Telegram-@SkinAIBDBot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/SkinAIBDBot)
-[![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github)](https://github.com/rafilovestosuffer/Hackathon_2.0_sci)
+[![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github)](https://github.com/rafilovestosuffer/SkinAI-Bangladesh)
 
 ![Tests](https://img.shields.io/badge/tests-366_passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
@@ -40,7 +40,7 @@ SkinAI Bangladesh takes a patient's **spoken Bengali complaint** and **one skin 
 
 > It is **not** a classifier in a web page. It is an **end-to-end clinical triage system** — engineered to always fail *toward* a doctor, never away from one.
 
-> **Origin.** Version 1 was built for the SciBlitz AI Challenge 2026 (July 2026; frozen at tag [`v1-sciblitz`](https://github.com/rafilovestosuffer/Hackathon_2.0_sci/tree/v1-sciblitz)). The International AI Builders Congress 2026 work (HealthSphere AI → CareAnywhere) adds: one shared model service for every channel, a clinician review queue, an offline store-and-forward page, and "why this tier" explanations.
+> **Origin.** Version 1 was built for the SciBlitz AI Challenge 2026 (July 2026; frozen at tag [`v1-sciblitz`](https://github.com/rafilovestosuffer/SkinAI-Bangladesh/tree/v1-sciblitz)). The International AI Builders Congress 2026 work (HealthSphere AI → CareAnywhere) adds: one shared model service for every channel, a clinician review queue, an offline store-and-forward page, and "why this tier" explanations.
 
 ---
 
@@ -497,8 +497,8 @@ skinai-bangladesh/
 <br>
 
 ```bash
-git clone https://github.com/rafilovestosuffer/Hackathon_2.0_sci.git
-cd Hackathon_2.0_sci
+git clone https://github.com/rafilovestosuffer/SkinAI-Bangladesh.git
+cd SkinAI-Bangladesh
 
 pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt          # CPU only, ~3 GB RAM, Python 3.10+
@@ -680,7 +680,7 @@ The **same clinical pipeline, live inside Telegram** — no app install, no logi
 ## 📬 Contact
 
 **Rafiur Rahman** · mdrafiurrahman123098@gmail.com
-**Live app:** [huggingface.co/spaces/rafilovestosuffer/skinai-bd](https://huggingface.co/spaces/rafilovestosuffer/skinai-bd) · **Source:** [github.com/rafilovestosuffer/Hackathon_2.0_sci](https://github.com/rafilovestosuffer/Hackathon_2.0_sci)
+**Live app:** [huggingface.co/spaces/rafilovestosuffer/skinai-bd](https://huggingface.co/spaces/rafilovestosuffer/skinai-bd) · **Source:** [github.com/rafilovestosuffer/SkinAI-Bangladesh](https://github.com/rafilovestosuffer/SkinAI-Bangladesh)
 
 ---
 
