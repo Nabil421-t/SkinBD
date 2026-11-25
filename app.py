@@ -1363,6 +1363,8 @@ with tab2:
                     _suggested,
                     lang=_lang,
                     disease_context=_disease_context_str,
+                    patient_history=st.session_state.history,
+                    chat_history=st.session_state.chat_history[:-1],
                 )
             st.session_state.chat_history.append({
                 "role": "assistant", "content": _answer, "lang": _lang
@@ -1384,6 +1386,8 @@ with tab2:
                 _q,
                 lang=_lang,
                 disease_context=_disease_context_str,
+                patient_history=st.session_state.history,
+                chat_history=st.session_state.chat_history[:-1],
             )
         st.session_state.chat_history.append({
             "role": "assistant", "content": _answer, "lang": _lang

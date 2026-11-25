@@ -18,7 +18,11 @@ import requests
 logger = logging.getLogger(__name__)
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
-REQUEST_TIMEOUT = 30  # seconds — HF Spaces has variable latency; 10s caused frequent cold misses
+REQUEST_TIMEOUT = 3  # fast timeout so urgent patients never wait 30s+; DGHS fallback is instant
+
+# In-memory district-level cache (lat/lon rounded to 2 decimals) — avoids repeat 1.5s–30s API hits
+_HOSPITAL_CACHE: dict[tuple[float, float, int], tuple[float, list[dict]]] = {}
+_HOSPITAL_CACHE_TTL_SEC = 3600  # 1 hour
 
 # Default coordinates if user location unknown — Dhaka centre
 _DEFAULT_LAT = 23.8103
@@ -146,27 +150,21 @@ def _query_overpass(lat: float, lon: float, radius_m: int) -> list[dict]:
     );
     out center tags;
     """
-    for attempt in range(2):
-        try:
-            resp = requests.post(
-                OVERPASS_URL,
-                data={"data": query},
-                headers={"User-Agent": "SkinAI-BD/1.0 (https://huggingface.co/spaces/rafilovestosuffer/skinai-bangladesh)"},
-                timeout=REQUEST_TIMEOUT + 10,
-            )
-            resp.raise_for_status()
-            return resp.json().get("elements", [])
-        except requests.exceptions.Timeout:
-            if attempt == 0:
-                logger.warning("Overpass timeout on attempt 1, retrying in 2 s…")
-                time.sleep(2)
-                continue
-            logger.error("Overpass timed out after 2 attempts")
-            return []
-        except Exception as exc:
-            logger.warning("Overpass query failed: %s", exc)
-            return []
-    return []
+    try:
+        resp = requests.post(
+            OVERPASS_URL,
+            data={"data": query},
+            headers={"User-Agent": "SkinAI-BD/1.0 (https://huggingface.co/spaces/rafilovestosuffer/skinai-bangladesh)"},
+            timeout=REQUEST_TIMEOUT + 1,
+        )
+        resp.raise_for_status()
+        return resp.json().get("elements", [])
+    except requests.exceptions.Timeout:
+        logger.warning("Overpass timed out after %ds — falling back to DGHS list", REQUEST_TIMEOUT + 1)
+        return []
+    except Exception as exc:
+        logger.warning("Overpass query failed: %s", exc)
+        return []
 
 
 def _parse_element(el: dict, user_lat: float, user_lon: float) -> Optional[dict]:
@@ -221,9 +219,14 @@ def find_nearest_hospitals(
 ) -> list[dict]:
     """
     Return up to n nearest hospitals within radius_km of (lat, lon).
-    Uses Overpass API. Returns [] on network failure — caller must handle.
+    Uses Overpass API with 1-hour coordinate caching + instant DGHS fallback.
     Each dict: {name, address, lat, lon, dist_km, phone}
     """
+    cache_key = (round(lat, 2), round(lon, 2), radius_km)
+    cached = _HOSPITAL_CACHE.get(cache_key)
+    if cached and (time.time() - cached[0] < _HOSPITAL_CACHE_TTL_SEC):
+        return cached[1][:n]
+
     elements = _query_overpass(lat, lon, radius_m=radius_km * 1000)
     hospitals = []
     for el in elements:
@@ -238,6 +241,11 @@ def find_nearest_hospitals(
     if not result:
         logger.warning("Overpass returned no hospitals — using DGHS division fallback.")
         result = _nearest_division_fallback(lat, lon, n=n)
+
+    if hospitals:
+        _HOSPITAL_CACHE[cache_key] = (time.time(), hospitals)
+    elif result:
+        _HOSPITAL_CACHE[cache_key] = (time.time(), result)
 
     return result
 

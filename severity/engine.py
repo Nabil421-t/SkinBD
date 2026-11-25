@@ -61,6 +61,7 @@ def compute_tier(
     disease_class: str,
     confidence: float,
     transcript: str,
+    repeat_unimproved: bool = False,
 ) -> dict:
     # Early return: confident Normal detection → tier 0 (healthy), no escalation
     if disease_class == "Normal" and confidence >= CONF_TIER2:
@@ -82,6 +83,10 @@ def compute_tier(
     if any(kw in transcript for kw in ESCALATION_KEYWORDS):
         tier = min(tier + 1, 3)
 
+    # Signal 4: Agent Memory longitudinal escalation (unimproved repeat visit)
+    if repeat_unimproved:
+        tier = min(tier + 1, 3)
+
     result = {"tier": tier}
     result.update(TIER_ACTIONS[tier])
     return result
@@ -97,6 +102,7 @@ def explain_tier(
     disease_class: str,
     confidence: float,
     transcript: str,
+    repeat_unimproved: bool = False,
 ) -> list[dict]:
     """
     Plain-language reasons for the tier compute_tier() returns, one entry per
@@ -157,5 +163,16 @@ def explain_tier(
             en = f"Patient reported warning signs ({words_en}); already at the highest level."
             bn = f"রোগী সতর্কসংকেত জানিয়েছেন ({words_bn}); ইতিমধ্যে সর্বোচ্চ স্তরে আছে।"
         reasons.append({"signal": "keywords", "en": en, "bn": bn})
+        tier = new_tier
+
+    if repeat_unimproved:
+        new_tier = min(tier + 1, 3)
+        if new_tier > tier:
+            en = "Follow-up memory shows this condition persisted from a prior visit → escalated one level."
+            bn = "পূর্ববর্তী ভিজিটের পরও রোগের উন্নতি না হওয়ায় চিকিৎসার স্তর এক ধাপ বাড়ানো হলো।"
+        else:
+            en = "Follow-up memory confirms persistence from a prior visit; already at the highest level."
+            bn = "পূর্ববর্তী ভিজিটের পরও রোগের উন্নতি হয়নি; ইতিমধ্যে সর্বোচ্চ স্তরে আছে।"
+        reasons.append({"signal": "memory", "en": en, "bn": bn})
 
     return reasons

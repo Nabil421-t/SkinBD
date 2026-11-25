@@ -82,7 +82,7 @@ EXPORT_COLUMNS = [
 
 
 def _now() -> str:
-    return datetime.datetime.utcnow().isoformat(timespec="seconds")
+    return datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None).isoformat(timespec="seconds")
 
 
 def _get_conn() -> sqlite3.Connection:
@@ -113,7 +113,10 @@ def make_thumbnail(image) -> Optional[bytes]:
 def purge_older_than(days: int = RETENTION_DAYS, con: Optional[sqlite3.Connection] = None) -> int:
     own = con is None
     con = con or _get_conn()
-    cutoff = (datetime.datetime.utcnow() - datetime.timedelta(days=days)).isoformat(timespec="seconds")
+    cutoff = (
+        datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+        - datetime.timedelta(days=days)
+    ).isoformat(timespec="seconds")
     ids = [r["id"] for r in con.execute("SELECT id FROM cases WHERE created_ts < ?", (cutoff,))]
     if ids:
         con.executemany("DELETE FROM cases WHERE id = ?", [(i,) for i in ids])

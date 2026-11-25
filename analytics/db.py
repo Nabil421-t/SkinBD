@@ -62,7 +62,7 @@ def log_event(
             "(ts, event_type, disease_class, tier, lang, rag_chunks, conf_bucket) "
             "VALUES (?, ?, ?, ?, ?, ?, ?)",
             (
-                datetime.datetime.utcnow().isoformat(),
+                datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None).isoformat(),
                 event_type[:32],
                 disease_class[:64],
                 int(tier),

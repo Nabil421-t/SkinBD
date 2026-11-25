@@ -27,20 +27,28 @@ FAKE_METADATA = [
 
 
 def _make_fake_index(n=3, dim=384):
-    """Return a real FAISS IndexFlatIP with random vectors."""
-    import faiss
-    idx = faiss.IndexFlatIP(dim)
+    """Return a real FAISS IndexFlatIP if faiss is installed, else a lightweight numpy stub."""
     vecs = np.random.randn(n, dim).astype("float32")
     vecs /= np.linalg.norm(vecs, axis=1, keepdims=True)
-    idx.add(vecs)
-    return idx
+    try:
+        import faiss
+        idx = faiss.IndexFlatIP(dim)
+        idx.add(vecs)
+        return idx
+    except ImportError:
+        class _FakeFaissIndex:
+            ntotal = n
+            def search(self, qvec, k):
+                scores = qvec @ vecs.T
+                order = np.argsort(-scores, axis=1)[:, :k]
+                return np.take_along_axis(scores, order, axis=1), order
+        return _FakeFaissIndex()
 
 
 def _install_fake_state():
-    """Inject fake BM25 state so tests don't need real .txt files or a model download."""
+    """Inject fake BM25 + FAISS state (isolated from real on-disk ChromaDB)."""
     retriever._chunks = FAKE_METADATA.copy()
     retriever._idf = retriever._build_idf(FAKE_METADATA)
-    # Also wire up FAISS state for tests that explicitly test the FAISS path
     retriever._index = _make_fake_index(len(FAKE_METADATA))
     retriever._metadata = FAKE_METADATA.copy()
 
@@ -52,6 +60,14 @@ def _install_fake_state():
             return vecs
 
     retriever._embed_model = _FakeEmbedModel()
+
+
+@pytest.fixture(autouse=True)
+def _isolate_chroma_in_unit_tests():
+    """Prevent unit tests from querying the real on-disk rag/chroma_db/ collection."""
+    with patch.object(retriever, "_chroma_available", return_value=False), \
+         patch.object(retriever, "_chroma_build", return_value=False):
+        yield
 
 
 def _clear_state():

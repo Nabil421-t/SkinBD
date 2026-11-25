@@ -363,7 +363,35 @@ def handle_event(
         if sess.state in (State.RESULT_SENT, State.RAG_CHAT):
             if etype != "text" or not text:
                 return [TextOut(to=user_id, body=replies.format_chat_followup())]
-            # Treat any text as a RAG question
+            # Mid-chat safety check: if user reports urgent red flags or asks for hospitals,
+            # use the Clinical Orchestrator to re-triage + find hospitals immediately.
+            try:
+                from severity.engine import ESCALATION_KEYWORDS, compute_tier
+                has_red_flag = any(kw in text for kw in ESCALATION_KEYWORDS)
+            except Exception:
+                has_red_flag = False
+
+            if has_red_flag and sess.last_prediction:
+                try:
+                    from orchestrator.clinical_orchestrator import orchestrate_turn
+                    orch = orchestrate_turn(
+                        user_id=user_id,
+                        user_message=text,
+                        disease_class=sess.last_prediction.get("disease"),
+                        confidence=sess.last_prediction.get("confidence"),
+                        district=sess.district,
+                        patient_history=sess.patient_history,
+                        prior_tier=(sess.last_tier_result or {}).get("tier"),
+                    )
+                    if orch.get("tier_result"):
+                        sess.last_tier_result = orch["tier_result"]
+                    if orch.get("hospitals"):
+                        sess.nearest_hospital = orch["hospitals"][0]
+                    return [TextOut(to=user_id, body=replies.format_rag_answer(orch["answer"]))]
+                except Exception as e:
+                    logger.warning("Orchestrator mid-chat escalation failed: %s", e)
+
+            # Standard follow-up RAG question (memory-aware)
             try:
                 from rag.retriever import answer_question, load_index
                 load_index()

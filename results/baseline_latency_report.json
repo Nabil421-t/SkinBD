@@ -1,0 +1,60 @@
+{
+  "generated_utc": "2026-11-22T18:44:39+00:00",
+  "langsmith_project": "SkinAI-Bangladesh-Baseline",
+  "init": {
+    "loaded": true,
+    "chunk_count": 104,
+    "chroma_available": false,
+    "faiss_loaded": false,
+    "latency_ms": 12.6
+  },
+  "scenarios": [
+    {
+      "scenario": "1. Bengali RAG Query (BM25 Zero-Match & No Reranker)",
+      "latency_ms": 1468.1,
+      "backend_used": "bm25_only",
+      "top_bm25_score": 0.0,
+      "gap_detected": "BM25 scored 0.0 on Bengali script against English .txt corpus (fallback returns random first 5 chunks!)",
+      "retrieved_topics": [
+        "CDC | Atopic Dermatitis Symptoms",
+        "CDC | Atopic Dermatitis Treatment and Management",
+        "CDC | Atopic Dermatitis Diagnosis and Comorbidities",
+        "CDC | Atopic Dermatitis and Climate — Impact on Bangladesh Patients"
+      ],
+      "answer_preview": "দুঃখিত, এই প্রশ্নের উত্তর দিতে পারছি না।"
+    },
+    {
+      "scenario": "2. Hospital Query in Chat (Wasted LLM Call vs Direct Tool)",
+      "current_chat_rag_latency_ms": 1332.9,
+      "direct_hospital_tool_latency_ms": 1482.2,
+      "top_real_hospital_from_tool": "Rangpur Medical College Hospital",
+      "chat_answer_preview": "দুঃখিত, এই প্রশ্নের উত্তর দিতে পারছি না।",
+      "gap_detected": "Current chat routes hospital lookup to RAG+Gemini (cannot give real distance/phone) instead of routing directly to find_nearest_hospitals() via an Orchestrator."
+    },
+    {
+      "scenario": "3. Mid-Chat Emergency Red Flag (No Orchestrator Re-Triage)",
+      "user_message": "ভাই এখন আমার প্রচণ্ড জ্বর এসেছে আর ঘা থেকে রক্ত পড়ছে, কী করব?",
+      "tier_before": 1,
+      "tier_after_existing_router": 1,
+      "re_triaged_to_tier_3": false,
+      "hospital_finder_triggered": false,
+      "latency_ms": 1211.7,
+      "bot_reply_preview": "💡 দুঃখিত, এই প্রশ্নের উত্তর দিতে পারছি না।\n\n⚠ এটি AI বিশ্লেষণ, চিকিৎসকের পরামর্শের বিকল্প নয়।\nThis is an AI assessment, not a substitute for medical advice.",
+      "gap_detected": "CRITICAL: Tier stayed at 1 and Hospital Finder did NOT trigger despite fever+bleeding in chat!"
+    },
+    {
+      "scenario": "4. Repeat Visit After 5 Days Unimproved (No Episodic Memory)",
+      "visit_1_tier": 1,
+      "visit_2_tier": 1,
+      "latency_ms": 0.01,
+      "gap_detected": "UNDER-TRIAGE RISK: Patient returned unimproved after 5 days, but stateless compute_tier() sent them back to Tier 1 (Pharmacy) again instead of escalating to Tier 2 (Doctor)."
+    },
+    {
+      "scenario": "5. New User Asks Direct Question (Rigid State Machine)",
+      "latency_ms": 0.1,
+      "reply_1_preview": "👋 স্বাগতম! SkinAI Bangladesh — ত্বকের সমস্যার AI স্ক্রিনিং।\n\nশুরু করার জন্য, আপনার জেলার নাম বাংলায় বা ইংরেজিতে লিখুন।\nউদাহরণ: ঢাকা · Rangp",
+      "reply_2_preview": "❌ জেলা চিনতে পারিনি। আবার চেষ্টা করুন।\nDistrict not recognised. Please try again.\n\nউদাহরণ · Examples: ঢাকা, রংপুর, চট্টগ্রাম, সিলেট, খুলনা",
+      "gap_detected": "Rigid State Machine ignored the patient's question twice and forced 'Enter district' loop."
+    }
+  ]
+}

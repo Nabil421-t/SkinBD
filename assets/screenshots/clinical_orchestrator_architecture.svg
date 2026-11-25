@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" width="1600" height="980" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="orchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E1065"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="toolCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="problemBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2B121B"/>
+      <stop offset="100%" stop-color="#1A0C12"/>
+    </linearGradient>
+    <linearGradient id="outcomeBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#062E24"/>
+      <stop offset="100%" stop-color="#041D17"/>
+    </linearGradient>
+
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#A855F7"/>
+    </marker>
+    <marker id="arrowGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#F59E0B"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10B981"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#F43F5E"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1600" height="980" fill="url(#bg)"/>
+
+  <!-- Header -->
+  <text x="800" y="50" text-anchor="middle" fill="#F8FAFC" font-size="30" font-weight="800">
+    SkinAI Bangladesh — Clinical Agent Orchestrator Architecture
+  </text>
+  <text x="800" y="80" text-anchor="middle" fill="#94A3B8" font-size="16" font-weight="500">
+    Replacing Rigid State Machines &amp; Disconnected Tools with One Intelligent Decision Brain
+  </text>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 1: ALL CHANNELS FEED INTO ONE ORCHESTRATOR (Y = 108 to 198)       -->
+  <!-- ===================================================================== -->
+  <g transform="translate(50, 108)">
+    <rect x="0" y="0" width="340" height="82" rx="14" fill="url(#toolCard)" stroke="#38BDF8" stroke-width="2"/>
+    <text x="170" y="34" text-anchor="middle" fill="#38BDF8" font-size="17" font-weight="800">🌐 Web App (app.py)</text>
+    <text x="170" y="60" text-anchor="middle" fill="#CBD5E1" font-size="13.5">Diagnosis + Ask AI Chat</text>
+
+    <rect x="386" y="0" width="340" height="82" rx="14" fill="url(#toolCard)" stroke="#38BDF8" stroke-width="2"/>
+    <text x="556" y="34" text-anchor="middle" fill="#38BDF8" font-size="17" font-weight="800">📱 Telegram / WhatsApp</text>
+    <text x="556" y="60" text-anchor="middle" fill="#CBD5E1" font-size="13.5">Flexible Chat, Voice &amp; Photo</text>
+
+    <rect x="772" y="0" width="340" height="82" rx="14" fill="url(#toolCard)" stroke="#38BDF8" stroke-width="2"/>
+    <text x="942" y="34" text-anchor="middle" fill="#38BDF8" font-size="17" font-weight="800">📴 Offline /lite PWA</text>
+    <text x="942" y="60" text-anchor="middle" fill="#CBD5E1" font-size="13.5">Queued Rural Sync (/api/cases)</text>
+
+    <rect x="1158" y="0" width="342" height="82" rx="14" fill="url(#toolCard)" stroke="#38BDF8" stroke-width="2"/>
+    <text x="1329" y="34" text-anchor="middle" fill="#38BDF8" font-size="17" font-weight="800">🤖 MCP Client (Claude/Cursor)</text>
+    <text x="1329" y="60" text-anchor="middle" fill="#CBD5E1" font-size="13.5">One-Shot orchestrate_patient_care()</text>
+  </g>
+
+  <!-- Converging Arrows to Orchestrator -->
+  <path d="M 220 190 L 220 218 L 800 218 L 800 242" stroke="#38BDF8" stroke-width="2.6" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 606 190 L 606 218" stroke="#38BDF8" stroke-width="2.6" fill="none"/>
+  <path d="M 992 190 L 992 218" stroke="#38BDF8" stroke-width="2.6" fill="none"/>
+  <path d="M 1379 190 L 1379 218 L 800 218" stroke="#38BDF8" stroke-width="2.6" fill="none"/>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 2: THE CENTRAL CLINICAL ORCHESTRATOR (Y = 248 to 438)             -->
+  <!-- ===================================================================== -->
+  <g transform="translate(110, 248)">
+    <rect width="1380" height="186" rx="20" fill="url(#orchGrad)" stroke="#A855F7" stroke-width="3.5"/>
+    <rect x="440" y="-16" width="500" height="32" rx="8" fill="#A855F7"/>
+    <text x="690" y="5" text-anchor="middle" fill="#FFFFFF" font-size="15.5" font-weight="900">
+      🧠 CLINICAL AGENT ORCHESTRATOR (orchestrator/clinical_orchestrator.py)
+    </text>
+
+    <!-- 3 Internal Decision Stages inside Orchestrator -->
+    <g transform="translate(30, 34)">
+      <rect width="415" height="126" rx="12" fill="#171033" stroke="#C084FC" stroke-width="1.8"/>
+      <text x="20" y="30" fill="#E9D5FF" font-size="16" font-weight="800">Step 1: Read Context &amp; Intent</text>
+      <text x="20" y="58" fill="#CBD5E1" font-size="13.5">• Loads Patient Memory (district, age, visits)</text>
+      <text x="20" y="82" fill="#CBD5E1" font-size="13.5">• Detects Intent: New Photo? Medical Question?</text>
+      <text x="20" y="106" fill="#FDE68A" font-size="13.5" font-weight="700">• Scans for Mid-Chat Red Flags (জ্বর/রক্ত/ব্যথা)</text>
+    </g>
+
+    <line x1="448" y1="97" x2="480" y2="97" stroke="#C084FC" stroke-width="3" marker-end="url(#arrowPurple)"/>
+
+    <g transform="translate(483, 34)">
+      <rect width="415" height="126" rx="12" fill="#171033" stroke="#C084FC" stroke-width="1.8"/>
+      <text x="20" y="30" fill="#E9D5FF" font-size="16" font-weight="800">Step 2: Smart Dynamic Tool Routing</text>
+      <text x="20" y="58" fill="#CBD5E1" font-size="13.5">• Calls ONLY the tools needed (Zero waste!)</text>
+      <text x="20" y="82" fill="#34D399" font-size="13.5" font-weight="700">• Emergency Red Flag → Re-Triage + Hospital</text>
+      <text x="20" y="106" fill="#7DD3FC" font-size="13.5" font-weight="700">• Hospital Query → Direct OSM Tool (0 LLM cost)</text>
+    </g>
+
+    <line x1="901" y1="97" x2="933" y2="97" stroke="#C084FC" stroke-width="3" marker-end="url(#arrowPurple)"/>
+
+    <g transform="translate(936, 34)">
+      <rect width="414" height="126" rx="12" fill="#171033" stroke="#C084FC" stroke-width="1.8"/>
+      <text x="20" y="30" fill="#E9D5FF" font-size="16" font-weight="800">Step 3: Synthesize &amp; Audit Trace</text>
+      <text x="20" y="58" fill="#CBD5E1" font-size="13.5">• Combines Triage + Hospital + RAG into 1 reply</text>
+      <text x="20" y="82" fill="#CBD5E1" font-size="13.5">• Saves updated visit &amp; chat turn to Memory</text>
+      <text x="20" y="106" fill="#C084FC" font-size="13.5" font-weight="700">• Logs tools_called[] for full clinical auditability</text>
+    </g>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ARROWS FROM ORCHESTRATOR TO 4 MANAGED TOOLS                           -->
+  <!-- ===================================================================== -->
+  <line x1="250" y1="434" x2="250" y2="495" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowGold)"/>
+  <rect x="135" y="452" width="230" height="24" rx="6" fill="#070B19" stroke="#F59E0B" stroke-width="1.4"/>
+  <text x="250" y="468" text-anchor="middle" fill="#FBBF24" font-size="12" font-weight="800">Always: Read / Update State</text>
+
+  <line x1="615" y1="434" x2="615" y2="495" stroke="#F43F5E" stroke-width="3" marker-end="url(#arrowRed)"/>
+  <rect x="480" y="452" width="270" height="24" rx="6" fill="#070B19" stroke="#F43F5E" stroke-width="1.4"/>
+  <text x="615" y="468" text-anchor="middle" fill="#FDA4AF" font-size="12" font-weight="800">If New Photo OR Chat Red Flag</text>
+
+  <line x1="985" y1="434" x2="985" y2="495" stroke="#38BDF8" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <rect x="845" y="452" width="280" height="24" rx="6" fill="#070B19" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="985" y="468" text-anchor="middle" fill="#7DD3FC" font-size="12" font-weight="800">ONLY If Tier ≥ 2 OR User Asks</text>
+
+  <line x1="1350" y1="434" x2="1350" y2="495" stroke="#10B981" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <rect x="1220" y="452" width="260" height="24" rx="6" fill="#070B19" stroke="#10B981" stroke-width="1.4"/>
+  <text x="1350" y="468" text-anchor="middle" fill="#6EE7B7" font-size="12" font-weight="800">If Medical Question Asked</text>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 3: THE 4 ORCHESTRATED TOOLS (Y = 502 to 682)                      -->
+  <!-- ===================================================================== -->
+  <!-- Tool A: Agent Memory -->
+  <g transform="translate(50, 502)">
+    <rect width="350" height="175" rx="16" fill="#261C10" stroke="#F59E0B" stroke-width="2.5"/>
+    <rect x="20" y="16" width="110" height="24" rx="6" fill="#F59E0B"/>
+    <text x="75" y="32" text-anchor="middle" fill="#0B1120" font-size="11.5" font-weight="900">TOOL A</text>
+    <text x="20" y="66" fill="#FBBF24" font-size="18" font-weight="800">Agent Memory Store</text>
+    <text x="20" y="92" fill="#FEF3C7" font-size="13.5">• 9-field voice history</text>
+    <text x="20" y="114" fill="#FEF3C7" font-size="13.5">• Past 5 visits (repeat check)</text>
+    <text x="20" y="136" fill="#FEF3C7" font-size="13.5">• District, Language &amp; Chat turns</text>
+    <text x="20" y="160" fill="#FDE68A" font-size="12" font-family="monospace">memory/agent_memory.py</text>
+  </g>
+
+  <!-- Tool B: 4-Signal Triage -->
+  <g transform="translate(433, 502)">
+    <rect width="350" height="175" rx="16" fill="#24131B" stroke="#F43F5E" stroke-width="2.5"/>
+    <rect x="20" y="16" width="110" height="24" rx="6" fill="#F43F5E"/>
+    <text x="75" y="32" text-anchor="middle" fill="#FFFFFF" font-size="11.5" font-weight="900">TOOL B</text>
+    <text x="20" y="66" fill="#FDA4AF" font-size="18" font-weight="800">4-Signal Triage Engine</text>
+    <text x="20" y="92" fill="#F1F5F9" font-size="13.5">• Disease + Confidence + Red Flags</text>
+    <text x="20" y="114" fill="#FBBF24" font-size="13.5" font-weight="700">• + Signal 4: Repeat Visit Memory</text>
+    <text x="20" y="136" fill="#F1F5F9" font-size="13.5">• Auto re-triages mid-chat alarms</text>
+    <text x="20" y="160" fill="#FDA4AF" font-size="12" font-family="monospace">severity/engine.py</text>
+  </g>
+
+  <!-- Tool C: Hospital Finder -->
+  <g transform="translate(816, 502)">
+    <rect width="350" height="175" rx="16" fill="#0F2033" stroke="#38BDF8" stroke-width="2.5"/>
+    <rect x="20" y="16" width="110" height="24" rx="6" fill="#38BDF8"/>
+    <text x="75" y="32" text-anchor="middle" fill="#0B1120" font-size="11.5" font-weight="900">TOOL C</text>
+    <text x="20" y="66" fill="#7DD3FC" font-size="18" font-weight="800">Emergency Hospital Tool</text>
+    <text x="20" y="92" fill="#E0F2FE" font-size="13.5">• OpenStreetMap Overpass + DGHS</text>
+    <text x="20" y="114" fill="#E0F2FE" font-size="13.5">• Uses remembered district</text>
+    <text x="20" y="136" fill="#34D399" font-size="13.5" font-weight="700">• Skips LLM when only map needed</text>
+    <text x="20" y="160" fill="#7DD3FC" font-size="12" font-family="monospace">map/hospital_finder.py</text>
+  </g>
+
+  <!-- Tool D: Hybrid + Rerank RAG -->
+  <g transform="translate(1200, 502)">
+    <rect width="350" height="175" rx="16" fill="#06281F" stroke="#10B981" stroke-width="2.5"/>
+    <rect x="20" y="16" width="110" height="24" rx="6" fill="#10B981"/>
+    <text x="75" y="32" text-anchor="middle" fill="#052E22" font-size="11.5" font-weight="900">TOOL D</text>
+    <text x="20" y="66" fill="#34D399" font-size="18" font-weight="800">Hybrid + Rerank RAG</text>
+    <text x="20" y="92" fill="#ECFDF5" font-size="13.5">• Dense Vector + BM25 (RRF)</text>
+    <text x="20" y="114" fill="#ECFDF5" font-size="13.5">• Clinical Reranker + Kuzu Graph</text>
+    <text x="20" y="136" fill="#FBBF24" font-size="13.5" font-weight="700">• Grounded in {memory_note}</text>
+    <text x="20" y="160" fill="#6EE7B7" font-size="12" font-family="monospace">rag/retriever.py</text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 4: WHY ORCHESTRATOR? BEFORE vs. AFTER IMPACT (Y = 718 to 945)     -->
+  <!-- ===================================================================== -->
+  <!-- Left: Problems Solved -->
+  <g transform="translate(50, 718)">
+    <rect width="730" height="225" rx="16" fill="url(#problemBox)" stroke="#F43F5E" stroke-width="2.2"/>
+    <text x="28" y="38" fill="#FDA4AF" font-size="19" font-weight="800">❌ Problems Without Orchestrator (Current System)</text>
+    <text x="28" y="72" fill="#F1F5F9" font-size="14.5">1. <tspan font-weight="700" fill="#FB7185">Missed Mid-Chat Emergencies:</tspan> Saying "জ্বর ও রক্তপাত" in chat only calls RAG —</text>
+    <text x="48" y="94" fill="#CBD5E1" font-size="14">never re-runs Triage or Hospital Finder!</text>
+    <text x="28" y="124" fill="#F1F5F9" font-size="14.5">2. <tspan font-weight="700" fill="#FB7185">Rigid Bot Flow:</tspan> Forces District → Photo → Voice; blocks direct questions.</text>
+    <text x="28" y="154" fill="#F1F5F9" font-size="14.5">3. <tspan font-weight="700" fill="#FB7185">Wasted LLM Calls:</tspan> Asking for nearby hospitals hits slow Gemini API instead of OSM.</text>
+    <text x="28" y="184" fill="#F1F5F9" font-size="14.5">4. <tspan font-weight="700" fill="#FB7185">Fragmented Code:</tspan> Web, Telegram &amp; MCP each implement separate if/else logic.</text>
+    <text x="28" y="210" fill="#F1F5F9" font-size="14.5">5. <tspan font-weight="700" fill="#FB7185">Multi-Trip MCP:</tspan> External AI agents need 3 separate calls &amp; often skip hospitals.</text>
+  </g>
+
+  <!-- Right: Outcomes Achieved -->
+  <g transform="translate(820, 718)">
+    <rect width="730" height="225" rx="16" fill="url(#outcomeBox)" stroke="#10B981" stroke-width="2.2"/>
+    <text x="28" y="38" fill="#6EE7B7" font-size="19" font-weight="800">✅ Outcomes With Clinical Orchestrator (Upgraded)</text>
+    <text x="28" y="72" fill="#ECFDF5" font-size="14.5">1. <tspan font-weight="700" fill="#34D399">Zero Missed Emergencies:</tspan> Mid-chat red flags auto-trigger Tier 3 + Hospital lookup.</text>
+    <text x="28" y="104" fill="#ECFDF5" font-size="14.5">2. <tspan font-weight="700" fill="#34D399">Natural UX:</tspan> Patients can ask questions, find hospitals, or screen in any order.</text>
+    <text x="28" y="136" fill="#ECFDF5" font-size="14.5">3. <tspan font-weight="700" fill="#34D399">Faster &amp; Cheaper:</tspan> Direct tool routing cuts unnecessary Gemini API latency &amp; cost.</text>
+    <text x="28" y="168" fill="#ECFDF5" font-size="14.5">4. <tspan font-weight="700" fill="#34D399">Single Source of Truth:</tspan> Web, Telegram, /lite &amp; MCP share identical safety rules.</text>
+    <text x="28" y="200" fill="#ECFDF5" font-size="14.5">5. <tspan font-weight="700" fill="#34D399">Full Auditability:</tspan> Every turn logs exact <tspan fill="#FDE68A" font-family="monospace">tools_called[]</tspan> + clinical reasoning.</text>
+  </g>
+</svg>

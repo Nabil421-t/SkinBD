@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 960" width="1600" height="960" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="gapCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#28151D"/>
+      <stop offset="100%" stop-color="#1D1118"/>
+    </linearGradient>
+    <linearGradient id="fixCardGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2B2111"/>
+      <stop offset="100%" stop-color="#1F180D"/>
+    </linearGradient>
+    <linearGradient id="fixCardGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#092E24"/>
+      <stop offset="100%" stop-color="#06211A"/>
+    </linearGradient>
+
+    <marker id="arrowRight" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowFlow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1600" height="960" fill="url(#bg)"/>
+
+  <!-- Title Header -->
+  <text x="800" y="54" text-anchor="middle" fill="#F8FAFC" font-size="30" font-weight="800">
+    SkinAI Bangladesh — Current Gaps vs. My Proposed Upgrade
+  </text>
+  <text x="800" y="84" text-anchor="middle" fill="#94A3B8" font-size="16" font-weight="500">
+    Adding Agent Memory &amp; True Hybrid + Rerank RAG to the Existing Pipeline
+  </text>
+
+  <!-- ===================================================================== -->
+  <!-- TOP BAR: SIMPLE 4-STEP FLOW SHOWING WHERE MY UPGRADES PLUG IN          -->
+  <!-- ===================================================================== -->
+  <rect x="50" y="108" width="1500" height="118" rx="16" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Step 1: Inputs -->
+  <rect x="80" y="128" width="280" height="78" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+  <text x="220" y="158" text-anchor="middle" fill="#38BDF8" font-size="16" font-weight="800">1. Patient Input (Existing)</text>
+  <text x="220" y="184" text-anchor="middle" fill="#CBD5E1" font-size="13.5">Bengali Voice + Skin Photo</text>
+
+  <line x1="360" y1="167" x2="415" y2="167" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrowFlow)"/>
+
+  <!-- Step 2: NEW Agent Memory -->
+  <rect x="420" y="124" width="330" height="86" rx="12" fill="#3B2506" stroke="#F59E0B" stroke-width="2.8"/>
+  <rect x="520" y="113" width="130" height="20" rx="5" fill="#F59E0B"/>
+  <text x="585" y="127" text-anchor="middle" fill="#0B1120" font-size="11" font-weight="900">★ MY UPGRADE 1</text>
+  <text x="585" y="160" text-anchor="middle" fill="#FBBF24" font-size="17" font-weight="800">2. Agent Memory Layer</text>
+  <text x="585" y="186" text-anchor="middle" fill="#FEF3C7" font-size="13.5">Remembers History · Past Visits · Prefs</text>
+
+  <line x1="750" y1="167" x2="805" y2="167" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrowFlow)"/>
+
+  <!-- Step 3: Triage + Hybrid RAG -->
+  <rect x="810" y="124" width="360" height="86" rx="12" fill="#052E22" stroke="#10B981" stroke-width="2.8"/>
+  <rect x="925" y="113" width="130" height="20" rx="5" fill="#10B981"/>
+  <text x="990" y="127" text-anchor="middle" fill="#052E22" font-size="11" font-weight="900">★ MY UPGRADE 2</text>
+  <text x="990" y="160" text-anchor="middle" fill="#34D399" font-size="17" font-weight="800">3. 4-Signal Triage &amp; Hybrid RAG</text>
+  <text x="990" y="186" text-anchor="middle" fill="#D1FAE5" font-size="13.5">Memory Escalation + RRF + Reranker</text>
+
+  <line x1="1170" y1="167" x2="1225" y2="167" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrowFlow)"/>
+
+  <!-- Step 4: Output -->
+  <rect x="1230" y="128" width="290" height="78" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+  <text x="1375" y="158" text-anchor="middle" fill="#38BDF8" font-size="16" font-weight="800">4. Clinical Output (Better)</text>
+  <text x="1375" y="184" text-anchor="middle" fill="#CBD5E1" font-size="13.5">Safer Tier · Personalized Chat · PDF</text>
+
+  <!-- ===================================================================== -->
+  <!-- COLUMN HEADERS                                                        -->
+  <!-- ===================================================================== -->
+  <rect x="50" y="250" width="680" height="48" rx="10" fill="#4C0519" stroke="#F43F5E" stroke-width="2"/>
+  <text x="390" y="281" text-anchor="middle" fill="#FECDD3" font-size="20" font-weight="800">
+    ❌ EXISTING GAPS (What is Missing Now)
+  </text>
+
+  <rect x="870" y="250" width="680" height="48" rx="10" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+  <text x="1210" y="281" text-anchor="middle" fill="#A7F3D0" font-size="20" font-weight="800">
+    ✅ MY PROPOSED DESIGN (How I Fix It)
+  </text>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 1: CONVERSATIONAL & CLINICAL PROFILE MEMORY                       -->
+  <!-- ===================================================================== -->
+  <!-- Left Gap 1 -->
+  <g transform="translate(50, 320)">
+    <rect width="680" height="175" rx="16" fill="url(#gapCard)" stroke="#F43F5E" stroke-width="2.2"/>
+    <rect x="24" y="18" width="110" height="26" rx="6" fill="#F43F5E"/>
+    <text x="79" y="36" text-anchor="middle" fill="#FFFFFF" font-size="12.5" font-weight="800">GAP 1</text>
+    <text x="150" y="37" fill="#FDA4AF" font-size="19" font-weight="800">Chatbot Forgets Voice History &amp; Prior Chat</text>
+    <text x="24" y="72" fill="#F1F5F9" font-size="15" font-weight="600">
+      • Voice pipeline extracts 9 patient fields (age, duration, prior treatment),
+    </text>
+    <text x="38" y="96" fill="#F1F5F9" font-size="15" font-weight="600">
+      but <tspan fill="#FBBF24" font-family="monospace">answer_question()</tspan> only receives <tspan fill="#FBBF24" font-family="monospace">"Eczema (72%)"</tspan>!
+    </text>
+    <text x="24" y="126" fill="#CBD5E1" font-size="14.5">
+      • Previous chat messages (<tspan font-family="monospace">chat_history</tspan>) are never sent to Gemini.
+    </text>
+    <text x="24" y="154" fill="#FB7185" font-size="14" font-weight="700">
+      Result: A 65-yr-old and a 20-yr-old get the exact same generic answer; no follow-ups.
+    </text>
+  </g>
+
+  <!-- Center Arrow 1 -->
+  <line x1="745" y1="407" x2="852" y2="407" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrowRight)"/>
+  <rect x="757" y="372" width="84" height="24" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="799" y="388" text-anchor="middle" fill="#38BDF8" font-size="12" font-weight="800">FIX 1</text>
+
+  <!-- Right Fix 1 -->
+  <g transform="translate(870, 320)">
+    <rect width="680" height="175" rx="16" fill="url(#fixCardGold)" stroke="#F59E0B" stroke-width="2.5"/>
+    <rect x="24" y="18" width="165" height="26" rx="6" fill="#F59E0B"/>
+    <text x="106.5" y="36" text-anchor="middle" fill="#0B1120" font-size="12.5" font-weight="900">MEMORY LAYER A</text>
+    <text x="205" y="37" fill="#FBBF24" font-size="19" font-weight="800">Working &amp; Preference Memory in Prompt</text>
+    <text x="24" y="72" fill="#FEF3C7" font-size="15" font-weight="600">
+      • Injects <tspan fill="#34D399" font-family="monospace">{memory_note}</tspan> into RAG prompt with:
+    </text>
+    <text x="40" y="96" fill="#FDE68A" font-size="14.5">
+      1. All 9 voice history fields (Age, Duration, Area, Prior Treatment)
+    </text>
+    <text x="40" y="120" fill="#FDE68A" font-size="14.5">
+      2. Last 4 conversation turns + user preferences (District &amp; Language)
+    </text>
+    <text x="24" y="154" fill="#34D399" font-size="14.5" font-weight="700">
+      ✔ Impact: Personalized clinical answers + natural multi-turn follow-up chat.
+    </text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 2: REPEAT VISIT TRIAGE MEMORY                                     -->
+  <!-- ===================================================================== -->
+  <!-- Left Gap 2 -->
+  <g transform="translate(50, 520)">
+    <rect width="680" height="175" rx="16" fill="url(#gapCard)" stroke="#F43F5E" stroke-width="2.2"/>
+    <rect x="24" y="18" width="110" height="26" rx="6" fill="#F43F5E"/>
+    <text x="79" y="36" text-anchor="middle" fill="#FFFFFF" font-size="12.5" font-weight="800">GAP 2</text>
+    <text x="150" y="37" fill="#FDA4AF" font-size="19" font-weight="800">No Follow-up Memory in Triage (10-min Reset)</text>
+    <text x="24" y="72" fill="#F1F5F9" font-size="15" font-weight="600">
+      • Bot forgets the patient after 10 minutes (<tspan fill="#FBBF24" font-family="monospace">TTL_SECONDS = 600</tspan>).
+    </text>
+    <text x="24" y="100" fill="#F1F5F9" font-size="15" font-weight="600">
+      • If a Tier-1 (Pharmacy) Tinea patient comes back 5 days later because
+    </text>
+    <text x="38" y="124" fill="#F1F5F9" font-size="15" font-weight="600">
+      the rash did NOT heal, <tspan fill="#FBBF24" font-family="monospace">compute_tier()</tspan> sends them to Pharmacy AGAIN!
+    </text>
+    <text x="24" y="154" fill="#FB7185" font-size="14" font-weight="700">
+      Result: High risk of Under-Triage on persistent or treatment-resistant cases.
+    </text>
+  </g>
+
+  <!-- Center Arrow 2 -->
+  <line x1="745" y1="607" x2="852" y2="607" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrowRight)"/>
+  <rect x="757" y="572" width="84" height="24" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="799" y="588" text-anchor="middle" fill="#38BDF8" font-size="12" font-weight="800">FIX 2</text>
+
+  <!-- Right Fix 2 -->
+  <g transform="translate(870, 520)">
+    <rect width="680" height="175" rx="16" fill="url(#fixCardGold)" stroke="#F59E0B" stroke-width="2.5"/>
+    <rect x="24" y="18" width="165" height="26" rx="6" fill="#F59E0B"/>
+    <text x="106.5" y="36" text-anchor="middle" fill="#0B1120" font-size="12.5" font-weight="900">MEMORY LAYER B</text>
+    <text x="205" y="37" fill="#FBBF24" font-size="19" font-weight="800">Episodic Visit Memory → 4th Triage Signal</text>
+    <text x="24" y="72" fill="#FEF3C7" font-size="15" font-weight="600">
+      • Remembers past visits (7-day auto-expiring, consent-compliant).
+    </text>
+    <text x="24" y="100" fill="#FEF3C7" font-size="15" font-weight="600">
+      • Adds <tspan fill="#34D399" font-family="monospace">Signal 4 (repeat_unimproved=True)</tspan> in <tspan fill="#FDE68A" font-family="monospace">severity/engine.py</tspan>:
+    </text>
+    <text x="40" y="124" fill="#FDE68A" font-size="14.5">
+      Auto-escalates Tier +1 (Pharmacy Tier 1 → Upazila Doctor Tier 2).
+    </text>
+    <text x="24" y="154" fill="#34D399" font-size="14.5" font-weight="700">
+      ✔ Impact: Safer triage decisions + remembers patient's district automatically.
+    </text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ROW 3: RAG RETRIEVAL (FALLBACK vs TRUE HYBRID + RERANK)               -->
+  <!-- ===================================================================== -->
+  <!-- Left Gap 3 -->
+  <g transform="translate(50, 720)">
+    <rect width="680" height="190" rx="16" fill="url(#gapCard)" stroke="#F43F5E" stroke-width="2.2"/>
+    <rect x="24" y="18" width="110" height="26" rx="6" fill="#F43F5E"/>
+    <text x="79" y="36" text-anchor="middle" fill="#FFFFFF" font-size="12.5" font-weight="800">GAP 3</text>
+    <text x="150" y="37" fill="#FDA4AF" font-size="19" font-weight="800">RAG Uses Fallback (Not Hybrid) &amp; No Reranker</text>
+    <text x="24" y="72" fill="#F1F5F9" font-size="15" font-weight="600">
+      • In <tspan fill="#FBBF24" font-family="monospace">rag/retriever.py</tspan>, ChromaDB and BM25 use <tspan fill="#FBBF24" font-family="monospace">if / return</tspan> fallback —
+    </text>
+    <text x="38" y="96" fill="#F1F5F9" font-size="15" font-weight="600">
+      they NEVER run together!
+    </text>
+    <text x="24" y="124" fill="#CBD5E1" font-size="14.5">
+      • All 104 <tspan font-family="monospace">.txt</tspan> files are in English, so Bengali queries score <tspan fill="#FB7185" font-weight="700">0</tspan> in BM25.
+    </text>
+    <text x="24" y="148" fill="#CBD5E1" font-size="14.5">
+      • No Reranker to prioritize chunks matching the patient's diagnosed disease.
+    </text>
+    <text x="24" y="174" fill="#FB7185" font-size="14" font-weight="700">
+      Result: Irrelevant chunks retrieved when patients ask in Bengali or Banglish.
+    </text>
+  </g>
+
+  <!-- Center Arrow 3 -->
+  <line x1="745" y1="815" x2="852" y2="815" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrowRight)"/>
+  <rect x="757" y="780" width="84" height="24" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="799" y="796" text-anchor="middle" fill="#38BDF8" font-size="12" font-weight="800">FIX 3</text>
+
+  <!-- Right Fix 3 -->
+  <g transform="translate(870, 720)">
+    <rect width="680" height="190" rx="16" fill="url(#fixCardGreen)" stroke="#10B981" stroke-width="2.5"/>
+    <rect x="24" y="18" width="165" height="26" rx="6" fill="#10B981"/>
+    <text x="106.5" y="36" text-anchor="middle" fill="#052E22" font-size="12.5" font-weight="900">HYBRID + RERANK</text>
+    <text x="205" y="37" fill="#34D399" font-size="19" font-weight="800">True Hybrid Search (RRF) + Clinical Reranker</text>
+    <text x="24" y="72" fill="#ECFDF5" font-size="15" font-weight="600">
+      1. <tspan fill="#6EE7B7">Parallel Search:</tspan> Dense Vector (e5-small) + Sparse BM25 run together
+    </text>
+    <text x="42" y="95" fill="#A7F3D0" font-size="14">
+      with Bengali→English Medical Synonym Expansion ("দাদ" → "tinea ringworm").
+    </text>
+    <text x="24" y="122" fill="#ECFDF5" font-size="15" font-weight="600">
+      2. <tspan fill="#6EE7B7">RRF Fusion:</tspan> Merges Top-15 Semantic + Top-15 Keyword results.
+    </text>
+    <text x="24" y="147" fill="#ECFDF5" font-size="15" font-weight="600">
+      3. <tspan fill="#6EE7B7">Clinical Reranker:</tspan> Re-scores top chunks by <tspan font-family="monospace">disease_context</tspan> &amp; DGHS BD.
+    </text>
+    <text x="24" y="174" fill="#34D399" font-size="14.5" font-weight="700">
+      ✔ Impact: High-precision Bengali retrieval grounded in the exact diagnosis.
+    </text>
+  </g>
+</svg>

@@ -77,7 +77,7 @@ if not cases:
 
 def _age(ts: str) -> str:
     try:
-        delta = datetime.datetime.utcnow() - datetime.datetime.fromisoformat(ts)
+        delta = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - datetime.datetime.fromisoformat(ts)
     except ValueError:
         return ts
     mins = int(delta.total_seconds() // 60)

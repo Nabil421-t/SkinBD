@@ -376,17 +376,27 @@ def extract_patient_history(transcript: str) -> dict:
 
     prompt = _EXTRACTION_PROMPT.format(transcript=transcript)
 
+    models_to_try = [
+        m for m in [
+            os.getenv("GEMINI_MODEL", "").strip(),
+            "gemini-3.5-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+        if m
+    ]
     for attempt in range(3):
+        model_name = models_to_try[min(attempt, len(models_to_try) - 1)]
         try:
             client = _get_gemini_client()
             response = client.models.generate_content(
-                model="gemini-2.5-flash-lite",
+                model=model_name,
                 contents=prompt,
             )
             text = _strip_fences(response.text)
             data = json.loads(text)
             return _validate_fields(data)
         except Exception as exc:
-            logger.warning("Gemini attempt %d failed: %s", attempt + 1, exc)
+            logger.warning("Gemini attempt %d (%s) failed: %s", attempt + 1, model_name, exc)
 
     return _empty_history()

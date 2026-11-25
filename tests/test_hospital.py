@@ -82,11 +82,13 @@ class TestGetDistrictCoords:
 
 class TestFindNearestHospitals:
     def setup_method(self):
+        hf._HOSPITAL_CACHE.clear()
         self._patch = patch.object(hf, "_query_overpass", side_effect=_fake_overpass)
         self._patch.start()
 
     def teardown_method(self):
         self._patch.stop()
+        hf._HOSPITAL_CACHE.clear()
 
     def test_returns_list(self):
         result = hf.find_nearest_hospitals(23.81, 90.41)
